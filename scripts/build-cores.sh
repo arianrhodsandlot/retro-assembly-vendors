@@ -18,9 +18,10 @@ node_bin_dir="${EMSDK_NODE%/*}"
 python_bin_dir="${EMSDK_PYTHON%/*}"
 PATH=$python_bin_dir:$node_bin_dir:$PATH
 
-# emmake and its friends use "python" in theire hashbang while newer python only provides a "python3"
-rm -f "$python_bin_dir"/python
-ln -s "$EMSDK_PYTHON" "$python_bin_dir"/python
+# emmake and its friends use "python" in their hashbang while newer python only provides a "python3"
+if ! command -v python &> /dev/null; then
+  ln -s "$EMSDK_PYTHON" "$python_bin_dir"/python
+fi
 
 # generate bitcode (.bc) files for each cores
 cd "$cores_dir"
