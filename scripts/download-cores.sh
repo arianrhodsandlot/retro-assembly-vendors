@@ -4,13 +4,13 @@ set -e
 
 wd=$(pwd)
 core_dist_dir=$wd/dist/cores
-cores=(beetle_vb fceumm gearboy gw mgba nestopia pcsx2 picodrive snes9x)
+cores=(mednafen_vb fceumm gearboy gw mgba nestopia snes9x)
 
 mkdir -p "$core_dist_dir"
 cd "$core_dist_dir"
 
 for core in "${cores[@]}"
 do
-  curl -O "https://web.libretro.com/$core.js"
-  curl -O "https://web.libretro.com/$core.wasm"
+  curl -Of https://web.libretro.com/"$core"_libretro.js
+  curl -Of https://web.libretro.com/"$core"_libretro.wasm
 done
