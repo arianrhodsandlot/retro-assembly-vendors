@@ -1,12 +1,15 @@
 .PHONY: all
 
-all: build_cores download_cores extract_databases
+all: build_cores download_cores extract_databases archive
 
 build_cores:
-	./scripts/build-cores.sh &
+	./scripts/build-cores.sh
 
 download_cores:
-	./scripts/download-cores.sh &
+	./scripts/download-cores.sh
 
 extract_databases:
-	./scripts/extract-databases.sh &
+	./scripts/extract-databases.sh
+
+archive:
+	zip -r9 dist/retro-assembly-vendor.zip dist/*
