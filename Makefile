@@ -12,4 +12,4 @@ extract_databases:
 	./scripts/extract-databases.sh
 
 archive:
-	zip -r9 dist/retro-assembly-vendor.zip dist/*
+	./scripts/archive.sh
