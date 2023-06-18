@@ -1,0 +1,21 @@
+[submodule "retroarch"]
+	path = modules/retroarch
+	url = https://github.com/libretro/RetroArch
+[submodule "modules/cores/beetle-lynx-libretro"]
+	path = modules/cores/beetle-lynx-libretro
+	url = https://github.com/libretro/beetle-lynx-libretro
+[submodule "modules/cores/prosystem-libretro"]
+	path = modules/cores/prosystem-libretro
+	url = https://github.com/libretro/prosystem-libretro
+[submodule "modules/cores/Genesis-Plus-GX"]
+	path = modules/cores/Genesis-Plus-GX
+	url = https://github.com/libretro/Genesis-Plus-GX
+[submodule "modules/cores/stella2014-libretro"]
+	path = modules/cores/stella2014-libretro
+	url = https://github.com/libretro/stella2014-libretro
+[submodule "modules/database"]
+	path = modules/database
+	url = https://github.com/libretro/libretro-database
+[submodule "modules/emsdk"]
+	path = modules/emsdk
+	url = https://github.com/emscripten-core/emsdk
