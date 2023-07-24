@@ -1,6 +1,9 @@
 .PHONY: all
 
-all: build_cores download_cores extract_databases archive
+all: patch_retroarch build_cores download_cores extract_databases archive
+
+patch_retroarch:
+	./scripts/build-cores.sh
 
 build_cores:
 	./scripts/build-cores.sh
