@@ -19,3 +19,21 @@
 [submodule "modules/emsdk"]
 	path = modules/emsdk
 	url = https://github.com/emscripten-core/emsdk
+[submodule "modules/cores/snes9x"]
+	path = modules/cores/snes9x
+	url = https://github.com/libretro/snes9x
+[submodule "modules/cores/mgba"]
+	path = modules/cores/mgba
+	url = https://github.com/libretro/mgba
+[submodule "modules/cores/nestopia"]
+	path = modules/cores/nestopia
+	url = https://github.com/libretro/nestopia
+[submodule "modules/cores/beetle-vb-libretro"]
+	path = modules/cores/beetle-vb-libretro
+	url = https://github.com/libretro/beetle-vb-libretro
+[submodule "modules/cores/Gearboy"]
+	path = modules/cores/Gearboy
+	url = https://github.com/libretro/Gearboy
+[submodule "modules/cores/libretro-fceumm"]
+	path = modules/cores/libretro-fceumm
+	url = https://github.com/libretro/libretro-fceumm.git

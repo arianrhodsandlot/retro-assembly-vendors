@@ -25,13 +25,19 @@ fi
 
 # generate bitcode (.bc) files for each cores
 cd "$cores_dir"
-for core in */; do
+# cores=(beetle-lynx-libretro beetle-vb-libretro libretro-fceumm Gearboy Genesis-Plus-GX mgba nestopia prosystem-libretro snes9x stella2014-libretro)
+cores=(Gearboy beetle-vb-libretro)
+for core in "${cores[@]}"; do
+  echo "building core $core ..."
   cd "$cores_dir/$core"
   if [ -e Makefile.libretro ]; then
-    echo "building core $core ..."
     emmake make -f Makefile.libretro platform=emscripten
   else
-    echo "building core $core ..."
+    if [ -e libretro/Makefile ]; then
+      cd libretro
+    elif [ -e platforms/libretro/Makefile ]; then
+      cd platforms/libretro
+    fi
     emmake make platform=emscripten
   fi
   mv ./*.bc "$retroarch_dist_dir"
