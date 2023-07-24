@@ -3,7 +3,7 @@
 all: patch_retroarch build_cores extract_databases archive
 
 patch_retroarch:
-	./scripts/build-cores.sh
+	./scripts/patch-retroarch.sh
 
 build_cores:
 	./scripts/build-cores.sh
