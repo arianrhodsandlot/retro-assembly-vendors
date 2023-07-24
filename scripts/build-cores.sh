@@ -25,8 +25,7 @@ fi
 
 # generate bitcode (.bc) files for each cores
 cd "$cores_dir"
-# cores=(beetle-lynx-libretro beetle-vb-libretro libretro-fceumm Gearboy Genesis-Plus-GX mgba nestopia prosystem-libretro snes9x stella2014-libretro)
-cores=(Gearboy beetle-vb-libretro)
+cores=(beetle-lynx-libretro beetle-vb-libretro Gearboy Genesis-Plus-GX libretro-fceumm mgba nestopia prosystem-libretro snes9x stella2014-libretro)
 for core in "${cores[@]}"; do
   echo "building core $core ..."
   cd "$cores_dir/$core"
