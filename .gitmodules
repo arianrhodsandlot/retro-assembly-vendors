@@ -13,9 +13,6 @@
 [submodule "modules/cores/stella2014-libretro"]
 	path = modules/cores/stella2014-libretro
 	url = https://github.com/libretro/stella2014-libretro
-[submodule "modules/database"]
-	path = modules/database
-	url = https://github.com/libretro/libretro-database
 [submodule "modules/emsdk"]
 	path = modules/emsdk
 	url = https://github.com/emscripten-core/emsdk
