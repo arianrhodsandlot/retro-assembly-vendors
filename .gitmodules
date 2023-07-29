@@ -34,3 +34,6 @@
 [submodule "modules/cores/libretro-fceumm"]
 	path = modules/cores/libretro-fceumm
 	url = https://github.com/libretro/libretro-fceumm.git
+[submodule "modules/cores/a5200"]
+	path = modules/cores/a5200
+	url = https://github.com/libretro/a5200.git

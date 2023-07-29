@@ -23,9 +23,13 @@ if ! command -v python &> /dev/null; then
   ln -s "$EMSDK_PYTHON" "$python_bin_dir"/python
 fi
 
+# remove early compiled outputs
+cd "$retroarch_dir"
+git clean -x
+
 # generate bitcode (.bc) files for each cores
 cd "$cores_dir"
-cores=(beetle-lynx-libretro beetle-vb-libretro Gearboy Genesis-Plus-GX libretro-fceumm mgba nestopia prosystem-libretro snes9x stella2014-libretro)
+cores=(a5200 beetle-lynx-libretro beetle-vb-libretro Gearboy Genesis-Plus-GX libretro-fceumm mgba nestopia prosystem-libretro snes9x stella2014-libretro)
 for core in "${cores[@]}"; do
   echo "building core $core ..."
   cd "$cores_dir/$core"
@@ -42,6 +46,7 @@ for core in "${cores[@]}"; do
   mv ./*.bc "$retroarch_dist_dir"
 done
 
+echo "compiling bitcode files..."
 # compile bitcode (.bc) files to wasm files
 cd "$retroarch_dist_dir"
 emmake ./dist-cores.sh emscripten
