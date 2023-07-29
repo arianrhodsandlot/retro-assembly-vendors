@@ -37,3 +37,6 @@
 [submodule "modules/cores/a5200"]
 	path = modules/cores/a5200
 	url = https://github.com/libretro/a5200.git
+[submodule "modules/cores/beetle-wswan-libretro"]
+	path = modules/cores/beetle-wswan-libretro
+	url = https://github.com/libretro/beetle-wswan-libretro.git
