@@ -40,3 +40,6 @@
 [submodule "modules/cores/beetle-wswan-libretro"]
 	path = modules/cores/beetle-wswan-libretro
 	url = https://github.com/libretro/beetle-wswan-libretro.git
+[submodule "modules/cores/beetle-ngp-libretro"]
+	path = modules/cores/beetle-ngp-libretro
+	url = https://github.com/libretro/beetle-ngp-libretro.git

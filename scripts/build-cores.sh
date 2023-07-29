@@ -29,7 +29,7 @@ git clean -x
 
 # generate bitcode (.bc) files for each cores
 cd "$cores_dir"
-cores=(a5200 beetle-lynx-libretro beetle-vb-libretro beetle-wswan-libretro Gearboy Genesis-Plus-GX libretro-fceumm mgba nestopia prosystem-libretro snes9x stella2014-libretro)
+cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro Gearboy Genesis-Plus-GX libretro-fceumm mgba nestopia prosystem-libretro snes9x stella2014-libretro)
 for core in "${cores[@]}"; do
   echo "building core $core ..."
   cd "$cores_dir/$core"
