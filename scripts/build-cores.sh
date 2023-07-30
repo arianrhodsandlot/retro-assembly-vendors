@@ -25,7 +25,7 @@ fi
 
 # remove early compiled outputs
 cd "$retroarch_dir"
-git clean -x
+git clean -xf
 
 # generate bitcode (.bc) files for each cores
 cd "$cores_dir"

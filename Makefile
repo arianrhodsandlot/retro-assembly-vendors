@@ -1,9 +1,9 @@
 .PHONY: all
 
-all: patch_retroarch build_cores archive
+all: patch_modules build_cores archive
 
-patch_retroarch:
-	./scripts/patch-retroarch.sh
+patch_modules:
+	./scripts/patch-modules.sh
 
 build_cores:
 	./scripts/build-cores.sh
