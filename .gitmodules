@@ -33,13 +33,13 @@
 	url = https://github.com/libretro/Gearboy
 [submodule "modules/cores/libretro-fceumm"]
 	path = modules/cores/libretro-fceumm
-	url = https://github.com/libretro/libretro-fceumm.git
+	url = https://github.com/libretro/libretro-fceumm
 [submodule "modules/cores/a5200"]
 	path = modules/cores/a5200
-	url = https://github.com/libretro/a5200.git
+	url = https://github.com/libretro/a5200
 [submodule "modules/cores/beetle-wswan-libretro"]
 	path = modules/cores/beetle-wswan-libretro
-	url = https://github.com/libretro/beetle-wswan-libretro.git
+	url = https://github.com/libretro/beetle-wswan-libretro
 [submodule "modules/cores/beetle-ngp-libretro"]
 	path = modules/cores/beetle-ngp-libretro
-	url = https://github.com/libretro/beetle-ngp-libretro.git
+	url = https://github.com/libretro/beetle-ngp-libretro
