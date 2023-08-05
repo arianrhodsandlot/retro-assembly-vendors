@@ -1,0 +1,11 @@
+{
+  "name": "retro-assembly-vendors",
+  "version": "1.16.0-202308051115",
+  "description": "Upstream files for Retro Assembly",
+  "keywords": [],
+  "author": "arianrhodsandlot",
+  "license": "GPL-3.0",
+  "files": [
+    "dist"
+  ]
+}

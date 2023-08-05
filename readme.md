@@ -31,3 +31,6 @@ Then all RetroArch cores will be built and archived in zip format. All artifacts
 + [Emscripten](https://github.com/emscripten-core/emscripten) Without which we could not run native codes inside browsers.
 + [webretro](https://github.com/BinBashBanana/webretro) Parts of our patches made on RetroArch is adapted from here.
 + [RetroArch patched by EmulatorJS maintainer](https://github.com/EmulatorJS/retroarch) Parts of our patches made on RetroArch is adapted from here.
+
+## License
+GPL-3.0
