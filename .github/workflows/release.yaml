@@ -17,6 +17,10 @@ jobs:
           files: |
             dist/cores/*
             dist/*.zip
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20.5.0'
+          registry-url: 'https://registry.npmjs.org'
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
