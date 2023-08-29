@@ -12,6 +12,8 @@ By running `make` the above steps will automatically run sequentially.
 
 Then all RetroArch cores will be built and archived in zip format. All artifacts will be put inside a `dist` directory.
 
+In addition, RetroArch cores will be uploaded to [NPM](https://www.npmjs.com/package/retro-assembly-vendors) for further usage in Retro Assembly via [jsDelivr](https://www.jsdelivr.com), a public CDN service that can delegate access to NPM files.
+
 ## Credits
 + Upstream Emulators:
   + [beetle-lynx-libretro](https://github.com/libretro/beetle-lynx-libretro) Emulator for Atari Lynx.
