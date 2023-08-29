@@ -1,0 +1,35 @@
+diff --git a/libretro/libretro-common/file/file_path.c b/libretro/libretro-common/file/file_path.c
+index b605862..bac6a40 100644
+--- a/libretro/libretro-common/file/file_path.c
++++ b/libretro/libretro-common/file/file_path.c
+@@ -865,7 +865,7 @@ void fill_pathname_resolve_relative(char *out_path,
+  * Makes sure not to get  two consecutive slashes
+  * between directory and path.
+  **/
+-void fill_pathname_join(char *out_path,
++size_t fill_pathname_join(char *out_path,
+       const char *dir, const char *path, size_t size)
+ {
+    if (out_path != dir)
+@@ -874,7 +874,7 @@ void fill_pathname_join(char *out_path,
+    if (*out_path)
+       fill_pathname_slash(out_path, size);
+ 
+-   strlcat(out_path, path, size);
++   return strlcat(out_path, path, size);
+ }
+ 
+ void fill_pathname_join_special_ext(char *out_path,
+diff --git a/libretro/libretro-common/include/file/file_path.h b/libretro/libretro-common/include/file/file_path.h
+index 0dcb7c1..a6bebde 100644
+--- a/libretro/libretro-common/include/file/file_path.h
++++ b/libretro/libretro-common/include/file/file_path.h
+@@ -368,7 +368,7 @@ void fill_pathname_resolve_relative(char *out_path, const char *in_refpath,
+  * Makes sure not to get  two consecutive slashes
+  * between directory and path.
+  **/
+-void fill_pathname_join(char *out_path, const char *dir,
++size_t fill_pathname_join(char *out_path, const char *dir,
+       const char *path, size_t size);
+ 
+ void fill_pathname_join_special_ext(char *out_path,
