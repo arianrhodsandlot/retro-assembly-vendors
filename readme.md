@@ -14,6 +14,11 @@ Then all RetroArch cores will be built and archived in zip format. All artifacts
 
 In addition, RetroArch cores will be uploaded to [NPM](https://www.npmjs.com/package/retro-assembly-vendors) for further usage in Retro Assembly via [jsDelivr](https://www.jsdelivr.com), a public CDN service that can delegate access to NPM files.
 
+## Debugging cores
+1. Start a static HTTP server at the root of the project. Maybe `python3 -m http.server` is a convenient choice.
+2. Visit http://localhost:8000/demo/test.html
+3. Select a core and upload a ROM, then the selected RetroArch core will run.
+
 ## Credits
 + Upstream Emulators:
   + [beetle-lynx-libretro](https://github.com/libretro/beetle-lynx-libretro) Emulator for Atari Lynx.

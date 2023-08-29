@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Assembly vendors demo</title>
+    <style>
+      body {
+        font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+        line-height: 1.15;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        padding: 200px 20px;
+      }
+      #select-file {
+        margin: 100px auto 0 auto;
+        display: block;
+      }
+      #canvas {
+        background-color: black;
+        background-image: repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+          repeating-linear-gradient(45deg, #000 25%, #222 25%, #222 75%, #000 75%, #000);
+        background-position: 0 0, 15px 15px;
+        background-size: 30px 30px;
+        cursor: default;
+        display: block;
+        image-rendering: pixelated;
+        inset: 0;
+        max-height: 100%;
+        max-width: 100%;
+        position: fixed;
+        display: none;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <select name="core" id="core">
+        <option value="">Select a core</option>
+        <option value="a5200">a5200</option>
+        <option value="fceumm">fceumm</option>
+        <option value="gearboy">gearboy</option>
+        <option value="genesis_plus_gx">genesis_plus_gx</option>
+        <option value="mednafen_lynx">mednafen_lynx</option>
+        <option value="mednafen_ngp">mednafen_ngp</option>
+        <option value="mednafen_vb">mednafen_vb</option>
+        <option value="mednafen_wswan">mednafen_wswan</option>
+        <option value="mgba">mgba</option>
+        <option value="nestopia">nestopia</option>
+        <option value="prosystem">prosystem</option>
+        <option value="snes9x">snes9x</option>
+        <option value="stella2014">stella2014</option>
+      </select>
+      <button type="button" id="button" hidden>Select a ROM</button>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>
