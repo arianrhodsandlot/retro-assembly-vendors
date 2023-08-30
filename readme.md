@@ -16,7 +16,7 @@ In addition, RetroArch cores will be uploaded to [NPM](https://www.npmjs.com/pac
 
 ## Debugging cores
 1. Start a static HTTP server at the root of the project. Maybe `python3 -m http.server` is a convenient choice.
-2. Visit http://localhost:8000/demo/test.html
+2. Visit http://localhost:8000/demo/index.html
 3. Select a core and upload a ROM, then the selected RetroArch core will run.
 
 ## Credits
