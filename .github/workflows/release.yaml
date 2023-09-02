@@ -19,7 +19,7 @@ jobs:
             dist/*.zip
       - uses: actions/setup-node@v3
         with:
-          node-version: '20.5.0'
+          node-version: '20.5.1'
           registry-url: 'https://registry.npmjs.org'
       - run: npm publish
         env:
