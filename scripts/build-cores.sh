@@ -25,14 +25,14 @@ function activate_em() {
   fi
 }
 
-# remove early compiled outputs
-cd "$retroarch_dir"
-git clean -xf
-
 # generate bitcode (.bc) files for each cores
 cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro FBNeo Genesis-Plus-GX libretro-fceumm mgba prosystem-libretro snes9x stella2014-libretro)
 for core in "${cores[@]}"; do
   echo "building core $core ..."
+
+  # remove early compiled outputs
+  cd "$retroarch_dir"
+  git clean -xf
 
   if [[ $core == 'FBNeo' ]]; then
     activate_em '2.0.34'
@@ -54,12 +54,13 @@ for core in "${cores[@]}"; do
     emmake make platform=emscripten
   fi
   mv ./*.bc "$retroarch_dist_dir"
-done
 
-echo "compiling bitcode files..."
-# compile bitcode (.bc) files to wasm files
-cd "$retroarch_dist_dir"
-emmake ./dist-cores.sh emscripten
+  echo "compiling bitcode files..."
+
+  # compile bitcode (.bc) files to wasm files
+  cd "$retroarch_dist_dir"
+  emmake ./dist-cores.sh emscripten
+done
 
 # move compiled js/wasm files to our dist directory
 core_dist_dir=$wd/dist/cores
