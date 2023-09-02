@@ -9,7 +9,7 @@ retroarch_dir=$wd/modules/retroarch
 retroarch_dist_dir=$retroarch_dir/dist-scripts
 
 # activate emscripten
-emsdk_version='1.39.5'
+emsdk_version='2.0.34'
 "$emsdk_dir/emsdk" install $emsdk_version
 "$emsdk_dir/emsdk" activate $emsdk_version
 . modules/emsdk/emsdk_env.sh
@@ -29,7 +29,7 @@ git clean -xf
 
 # generate bitcode (.bc) files for each cores
 cd "$cores_dir"
-cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro Gearboy Genesis-Plus-GX libretro-fceumm mgba nestopia prosystem-libretro snes9x stella2014-libretro)
+cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro FBNeo Gearboy Genesis-Plus-GX libretro-fceumm mgba nestopia prosystem-libretro snes9x stella2014-libretro)
 for core in "${cores[@]}"; do
   echo "building core $core ..."
   cd "$cores_dir/$core"
@@ -40,6 +40,8 @@ for core in "${cores[@]}"; do
       cd libretro
     elif [ -e platforms/libretro/Makefile ]; then
       cd platforms/libretro
+    elif [ -e src/burner/libretro/Makefile ]; then
+      cd src/burner/libretro
     fi
     emmake make platform=emscripten
   fi

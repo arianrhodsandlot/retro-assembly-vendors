@@ -43,3 +43,6 @@
 [submodule "modules/cores/beetle-ngp-libretro"]
 	path = modules/cores/beetle-ngp-libretro
 	url = https://github.com/libretro/beetle-ngp-libretro
+[submodule "modules/cores/FBNeo"]
+	path = modules/cores/FBNeo
+	url = https://github.com/libretro/FBNeo.git
