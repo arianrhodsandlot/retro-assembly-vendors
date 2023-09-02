@@ -28,9 +28,6 @@
 [submodule "modules/cores/beetle-vb-libretro"]
 	path = modules/cores/beetle-vb-libretro
 	url = https://github.com/libretro/beetle-vb-libretro
-[submodule "modules/cores/Gearboy"]
-	path = modules/cores/Gearboy
-	url = https://github.com/libretro/Gearboy
 [submodule "modules/cores/libretro-fceumm"]
 	path = modules/cores/libretro-fceumm
 	url = https://github.com/libretro/libretro-fceumm
@@ -45,4 +42,4 @@
 	url = https://github.com/libretro/beetle-ngp-libretro
 [submodule "modules/cores/FBNeo"]
 	path = modules/cores/FBNeo
-	url = https://github.com/libretro/FBNeo.git
+	url = https://github.com/libretro/FBNeo

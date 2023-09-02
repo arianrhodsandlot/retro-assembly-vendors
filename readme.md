@@ -26,10 +26,9 @@ In addition, RetroArch cores will be uploaded to [NPM](https://www.npmjs.com/pac
   + [Genesis-Plus-GX](https://github.com/libretro/Genesis-Plus-GX) Emulator for Sega Genesis and some other consoles.
   + [stella2014-libretro](https://github.com/libretro/stella2014-libretro) Emulator for Atari 2600.
   + [snes9x](https://github.com/libretro/snes9x) Emulator for SNES.
-  + [mgba](https://github.com/libretro/mgba) Emulator for GBA.
+  + [mgba](https://github.com/libretro/mgba) Emulator for GBA/Game Boy/Game Boy Color.
   + [nestopia](https://github.com/libretro/nestopia) Emulator for NES.
   + [beetle-vb-libretro](https://github.com/libretro/beetle-vb-libretro) Emulator for Virtual Boy.
-  + [Gearboy](https://github.com/libretro/Gearboy) Emulator for Game Boy.
   + [libretro-fceumm](https://github.com/libretro/libretro-fceumm) Emulator for NES.
   + [a5200](https://github.com/libretro/a5200) Emulator for Atari 5200.
   + [beetle-wswan-libretro](https://github.com/libretro/beetle-wswan-libretro) Emulator for WonderSwan.
