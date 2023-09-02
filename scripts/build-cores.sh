@@ -25,6 +25,10 @@ function activate_em() {
   fi
 }
 
+core_dist_dir=$wd/dist/cores
+mkdir -p "$core_dist_dir"
+retroarch_pkg_dir=$retroarch_dir/pkg/emscripten
+  
 # generate bitcode (.bc) files for each cores
 cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro FBNeo Genesis-Plus-GX libretro-fceumm mgba prosystem-libretro snes9x stella2014-libretro)
 for core in "${cores[@]}"; do
@@ -60,10 +64,7 @@ for core in "${cores[@]}"; do
   # compile bitcode (.bc) files to wasm files
   cd "$retroarch_dist_dir"
   emmake ./dist-cores.sh emscripten
-done
 
-# move compiled js/wasm files to our dist directory
-core_dist_dir=$wd/dist/cores
-mkdir -p "$core_dist_dir"
-retroarch_pkg_dir=$retroarch_dir/pkg/emscripten
-mv "$retroarch_pkg_dir"/*.{js,wasm} "$core_dist_dir"
+  # move compiled js/wasm files to our dist directory
+  mv "$retroarch_pkg_dir"/*.{js,wasm} "$core_dist_dir"
+done
