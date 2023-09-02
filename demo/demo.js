@@ -91,14 +91,8 @@ function writeConfigFile({ path, content }) {
   FS.writeFile(path, content)
 }
 
-async function launchRom(file) {
-  await loadEmscripten(core)
-
-  const { Module, FS } = window
-
-  const emscriptenFS = await createEmscriptenFS()
-  FS.mount(emscriptenFS, { root: '/home' }, '/home')
-
+async function writeFile(file) {
+  const { FS } = window
   const { name } = file
   const buffer = await file.arrayBuffer()
   const dataView = new Uint8Array(buffer)
@@ -107,6 +101,17 @@ async function launchRom(file) {
   FS.mkdirTree(`${raUserdataDir}content/`)
   FS.writeFile(`${raUserdataDir}content/${name}`, data, { encoding: 'binary' })
   FS.unlink(name)
+}
+
+async function launchRom(file) {
+  await loadEmscripten(core)
+
+  const { Module, FS } = window
+
+  const emscriptenFS = await createEmscriptenFS()
+  FS.mount(emscriptenFS, { root: '/home' }, '/home')
+
+  writeFile(file)
 
   const raConfig = 'menu_driver = rgui'
   writeConfigFile({ path: raConfigPath, content: raConfig })
@@ -122,7 +127,8 @@ async function launchRom(file) {
   }
 }
 
-const button = document.querySelector('#button')
+const romSelect = document.querySelector('#rom-select')
+const fileSelect = document.querySelector('#file-select')
 const select = document.querySelector('#core')
 
 async function onSelectRom() {
@@ -131,14 +137,21 @@ async function onSelectRom() {
   await launchRom(file)
 }
 
+async function onSelectFile() {
+  const [fileHandle] = await showOpenFilePicker()
+  const file = await fileHandle.getFile()
+  await writeFile(file)
+}
+
 function onSelectCore() {
   location.replace(select.value ? `?core=${encodeURIComponent(select.value)}` : location.pathname)
 }
 
 select.addEventListener('change', onSelectCore)
-button.addEventListener('click', onSelectRom)
+romSelect.addEventListener('click', onSelectRom)
+fileSelect.addEventListener('click', onSelectFile)
 
 if (core) {
   select.value = core
-  button.hidden = false
+  romSelect.hidden = false
 }

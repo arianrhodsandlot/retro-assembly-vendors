@@ -18,6 +18,12 @@
         margin: 100px auto 0 auto;
         display: block;
       }
+      #file-select {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 11;
+      }
       #canvas {
         background-color: black;
         background-image: repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
@@ -55,8 +61,9 @@
         <option value="snes9x">snes9x</option>
         <option value="stella2014">stella2014</option>
       </select>
-      <button type="button" id="button" hidden>Select a ROM</button>
+      <button type="button" id="rom-select" hidden>Select a ROM</button>
     </div>
+    <button type="button" id="file-select">Add a file</button>
     <canvas id="canvas"></canvas>
     <script type="module" src="./demo.js"></script>
   </body>
