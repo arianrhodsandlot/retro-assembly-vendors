@@ -9,29 +9,37 @@ retroarch_dir=$wd/modules/retroarch
 retroarch_dist_dir=$retroarch_dir/dist-scripts
 
 # activate emscripten
-emsdk_version='2.0.34'
-"$emsdk_dir/emsdk" install $emsdk_version
-"$emsdk_dir/emsdk" activate $emsdk_version
-. modules/emsdk/emsdk_env.sh
+function activate_em() {
+  emsdk_version=$1
+  "$emsdk_dir/emsdk" install $emsdk_version
+  "$emsdk_dir/emsdk" activate $emsdk_version
+  . "$wd/modules/emsdk/emsdk_env.sh"
 
-node_bin_dir="${EMSDK_NODE%/*}"
-python_bin_dir="${EMSDK_PYTHON%/*}"
-PATH=$python_bin_dir:$node_bin_dir:$PATH
+  node_bin_dir="${EMSDK_NODE%/*}"
+  python_bin_dir="${EMSDK_PYTHON%/*}"
+  PATH=$python_bin_dir:$node_bin_dir:$PATH
 
-# emmake and its friends use "python" in their hashbang while newer python only provides a "python3"
-if ! command -v python &> /dev/null; then
-  ln -s "$EMSDK_PYTHON" "$python_bin_dir"/python
-fi
+  # emmake and its friends use "python" in their hashbang while newer python only provides a "python3"
+  if ! command -v python &> /dev/null; then
+    ln -s "$EMSDK_PYTHON" "$python_bin_dir"/python
+  fi
+}
 
 # remove early compiled outputs
 cd "$retroarch_dir"
 git clean -xf
 
 # generate bitcode (.bc) files for each cores
-cd "$cores_dir"
 cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro FBNeo Genesis-Plus-GX libretro-fceumm mgba prosystem-libretro snes9x stella2014-libretro)
 for core in "${cores[@]}"; do
   echo "building core $core ..."
+
+  if [[ $core == 'FBNeo' ]]; then
+    activate_em '2.0.34'
+  else
+    activate_em '1.40.1'
+  fi
+
   cd "$cores_dir/$core"
   if [ -e Makefile.libretro ]; then
     emmake make -f Makefile.libretro platform=emscripten
