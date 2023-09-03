@@ -7,12 +7,15 @@ emsdk_dir=$wd/modules/emsdk
 cores_dir=$wd/modules/cores
 retroarch_dir=$wd/modules/retroarch
 retroarch_dist_dir=$retroarch_dir/dist-scripts
+retroarch_pkg_dir=$retroarch_dir/pkg/emscripten
+cores_dist_dir=$wd/dist/cores
 
-# activate emscripten
-function activate_em() {
+mkdir -p "$cores_dist_dir"
+
+function activate_emscripten() {
   emsdk_version=$1
-  "$emsdk_dir/emsdk" install $emsdk_version
-  "$emsdk_dir/emsdk" activate $emsdk_version
+  "$emsdk_dir/emsdk" install "$emsdk_version"
+  "$emsdk_dir/emsdk" activate "$emsdk_version"
   . "$wd/modules/emsdk/emsdk_env.sh"
 
   node_bin_dir="${EMSDK_NODE%/*}"
@@ -25,24 +28,12 @@ function activate_em() {
   fi
 }
 
-core_dist_dir=$wd/dist/cores
-mkdir -p "$core_dist_dir"
-retroarch_pkg_dir=$retroarch_dir/pkg/emscripten
-  
-# generate bitcode (.bc) files for each cores
-cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro FBNeo Genesis-Plus-GX libretro-fceumm mgba prosystem-libretro snes9x stella2014-libretro)
-for core in "${cores[@]}"; do
-  echo "building core $core ..."
-
+function build_core_bitcode() {
+  core=$1
+  echo "building bitcode for core $core ..."
   # remove early compiled outputs
   cd "$retroarch_dir"
   git clean -xf
-
-  if [[ $core == 'FBNeo' ]]; then
-    activate_em '2.0.34'
-  else
-    activate_em '1.40.1'
-  fi
 
   cd "$cores_dir/$core"
   if [ -e Makefile.libretro ]; then
@@ -58,13 +49,30 @@ for core in "${cores[@]}"; do
     emmake make platform=emscripten
   fi
   mv ./*.bc "$retroarch_dist_dir"
+  echo "build bitcode for core $core finished!"
+}
 
-  echo "compiling bitcode files..."
+function dist_cores()  {
+  echo "Compiling bitcode files..."
 
   # compile bitcode (.bc) files to wasm files
   cd "$retroarch_dist_dir"
   emmake ./dist-cores.sh emscripten
-
   # move compiled js/wasm files to our dist directory
-  mv "$retroarch_pkg_dir"/*.{js,wasm} "$core_dist_dir"
+  mv "$retroarch_pkg_dir"/*.{js,wasm} "$cores_dist_dir"
+  echo "Compile bitcode files finished!"
+}
+
+activate_emscripten '1.40.1'
+cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro Genesis-Plus-GX libretro-fceumm mgba prosystem-libretro snes9x stella2014-libretro)
+for core in "${cores[@]}"; do
+  build_core_bitcode "$core"
 done
+dist_cores
+
+activate_emscripten '2.0.34'
+cores=(FBNeo)
+for core in "${cores[@]}"; do
+  build_core_bitcode "$core"
+done
+dist_cores
