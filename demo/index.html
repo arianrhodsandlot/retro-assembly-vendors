@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Retro Assembly vendors demo</title>
+    <link rel="icon" href="https://retroassembly.com/assets/logo/logo-192x192.png" sizes="any" />
     <style>
       body {
         font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -57,13 +58,15 @@
         <option value="mednafen_wswan">mednafen_wswan</option>
         <option value="mgba">mgba</option>
         <option value="nestopia">nestopia</option>
+        <option value="picodrive">picodrive</option>
         <option value="prosystem">prosystem</option>
         <option value="snes9x">snes9x</option>
         <option value="stella2014">stella2014</option>
       </select>
-      <button type="button" id="rom-select" hidden>Select a ROM</button>
+      <button type="button" id="add-rom" hidden>Add a ROM file</button>
+      <button type="button" id="add-bios" hidden>Add a BIOS file</button>
+      <button type="button" id="run" hidden>Run</button>
     </div>
-    <button type="button" id="file-select">Add a file</button>
     <canvas id="canvas"></canvas>
     <script type="module" src="./demo.js"></script>
   </body>

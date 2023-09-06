@@ -3,6 +3,10 @@ const raUserdataDir = '/home/web_user/retroarch/userdata/'
 const raConfigPath = `${raUserdataDir}retroarch.cfg`
 const canvas = document.querySelector('#canvas')
 
+function delay(time = 1) {
+  return new Promise((resolve) => setTimeout(resolve, time))
+}
+
 function loadScript(src) {
   const script = document.createElement('script')
   script.setAttribute('src', src)
@@ -63,6 +67,10 @@ async function loadEmscripten(core) {
       } catch {}
     }
   }
+  const { Module } = window
+  while (!Module.asm) {
+    await delay(10)
+  }
 }
 
 async function createEmscriptenFS() {
@@ -84,39 +92,65 @@ async function createEmscriptenFS() {
   return new EmscriptenFS(FS, PATH, ERRNO_CODES)
 }
 
-function writeConfigFile({ path, content }) {
+async function writeConfigFile({ path, content }) {
   const { FS } = window
   const dir = path.slice(0, path.lastIndexOf('/'))
   FS.mkdirTree(dir)
   FS.writeFile(path, content)
+  await delay(100)
 }
 
-async function writeFile(file) {
+async function writeFile(file, dir) {
   const { FS } = window
   const { name } = file
   const buffer = await file.arrayBuffer()
   const dataView = new Uint8Array(buffer)
   FS.createDataFile('/', name, dataView, true, false)
   const data = FS.readFile(name, { encoding: 'binary' })
-  FS.mkdirTree(`${raUserdataDir}content/`)
-  FS.writeFile(`${raUserdataDir}content/${name}`, data, { encoding: 'binary' })
+  FS.mkdirTree(`${raUserdataDir}${dir}/`)
+  FS.writeFile(`${raUserdataDir}${dir}/${name}`, data, { encoding: 'binary' })
   FS.unlink(name)
+  await delay(100)
 }
 
-async function launchRom(file) {
-  await loadEmscripten(core)
+async function prepare(file) {
+  if (!('FS' in window)) {
+    await loadEmscripten(core)
 
-  const { Module, FS } = window
+    const { FS } = window
 
-  const emscriptenFS = await createEmscriptenFS()
-  FS.mount(emscriptenFS, { root: '/home' }, '/home')
+    const emscriptenFS = await createEmscriptenFS()
+    FS.mount(emscriptenFS, { root: '/home' }, '/home')
+    const raConfig = 'menu_driver = rgui'
+    await writeConfigFile({ path: raConfigPath, content: raConfig })
+  }
+}
 
-  writeFile(file)
+const addRomButton = document.querySelector('#add-rom')
+const addBiosButton = document.querySelector('#add-bios')
+const runButton = document.querySelector('#run')
+const select = document.querySelector('#core')
 
-  const raConfig = 'menu_driver = rgui'
-  writeConfigFile({ path: raConfigPath, content: raConfig })
+const roms = []
+async function addRom() {
+  await prepare()
+  const [fileHandle] = await showOpenFilePicker()
+  const file = await fileHandle.getFile()
+  await writeFile(file, 'content')
+  roms.push(file)
+}
 
-  const raArgs = [`/home/web_user/retroarch/userdata/content/${file.name}`]
+async function addBios() {
+  await prepare()
+  const [fileHandle] = await showOpenFilePicker()
+  const file = await fileHandle.getFile()
+  await writeFile(file, 'system')
+}
+
+async function run() {
+  const { Module } = window
+  const [rom] = roms
+  const raArgs = [`/home/web_user/retroarch/userdata/content/${rom.name}`]
   Module.callMain(raArgs)
   if (canvas) {
     canvas.style.setProperty('display', 'block')
@@ -127,31 +161,18 @@ async function launchRom(file) {
   }
 }
 
-const romSelect = document.querySelector('#rom-select')
-const fileSelect = document.querySelector('#file-select')
-const select = document.querySelector('#core')
-
-async function onSelectRom() {
-  const [fileHandle] = await showOpenFilePicker()
-  const file = await fileHandle.getFile()
-  await launchRom(file)
-}
-
-async function onSelectFile() {
-  const [fileHandle] = await showOpenFilePicker()
-  const file = await fileHandle.getFile()
-  await writeFile(file)
-}
-
 function onSelectCore() {
   location.replace(select.value ? `?core=${encodeURIComponent(select.value)}` : location.pathname)
 }
 
 select.addEventListener('change', onSelectCore)
-romSelect.addEventListener('click', onSelectRom)
-fileSelect.addEventListener('click', onSelectFile)
+addRomButton.addEventListener('click', addRom)
+addBiosButton.addEventListener('click', addBios)
+runButton.addEventListener('click', run)
 
 if (core) {
   select.value = core
-  romSelect.hidden = false
+  addRomButton.hidden = false
+  addBiosButton.hidden = false
+  runButton.hidden = false
 }
