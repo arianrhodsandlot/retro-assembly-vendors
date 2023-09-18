@@ -4,7 +4,7 @@ Scripts for build upstream files for [Retro Assembly](https://github.com/arianrh
 
 ## Usage
 Our work contains three steps:
-1. Apply patches to some upstream repository (currently there are only RetroArch and Genesis Plus GX need to be patched), for better usage inside browser or bug fixes.
+1. Apply patches to some upstream repository (currently there is only RetroArch need to be patched), for better usage inside browser or bug fixes.
 2. Compile RetroArch cores with Emscripten following instructions indroduced here: [RetroArch Web Player](https://github.com/libretro/RetroArch/blob/master/pkg/emscripten/README.md).
 3. Archive the wasm and js files.
 
