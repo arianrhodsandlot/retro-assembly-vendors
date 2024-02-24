@@ -66,17 +66,9 @@ function dist_cores()  {
   echo "Compile bitcode files finished!"
 }
 
-cores=(a5200 beetle-lynx-libretro beetle-ngp-libretro beetle-vb-libretro beetle-wswan-libretro Genesis-Plus-GX libretro-fceumm mgba prosystem-libretro snes9x stella2014-libretro)
+cores=(a5200 FBNeo stella2014-libretro prosystem-libretro)
 clean_up_retroarch_dir
-activate_emscripten '1.40.1'
-for core in "${cores[@]}"; do
-  build_core_bitcode "$core"
-done
-dist_cores
-
-cores=(FBNeo)
-clean_up_retroarch_dir
-activate_emscripten '2.0.34'
+activate_emscripten '3.1.54'
 for core in "${cores[@]}"; do
   build_core_bitcode "$core"
 done
