@@ -66,7 +66,7 @@ function dist_cores()  {
   echo "Compile bitcode files finished!"
 }
 
-cores=(a5200 FBNeo stella2014-libretro prosystem-libretro)
+cores=(FBNeo stella2014-libretro prosystem-libretro)
 clean_up_retroarch_dir
 activate_emscripten '3.1.54'
 for core in "${cores[@]}"; do
