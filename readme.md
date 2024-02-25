@@ -21,18 +21,10 @@ In addition, RetroArch cores will be uploaded to [NPM](https://www.npmjs.com/pac
 
 ## Credits
 + Upstream Emulators:
-  + [beetle-lynx-libretro](https://github.com/libretro/beetle-lynx-libretro) Emulator for Atari Lynx.
-  + [prosystem-libretro](https://github.com/libretro/prosystem-libretro) Emulator for Atari 7800.
-  + [Genesis-Plus-GX](https://github.com/libretro/Genesis-Plus-GX) Emulator for Sega Genesis and some other consoles.
-  + [stella2014-libretro](https://github.com/libretro/stella2014-libretro) Emulator for Atari 2600.
-  + [snes9x](https://github.com/libretro/snes9x) Emulator for SNES.
-  + [mgba](https://github.com/libretro/mgba) Emulator for GBA/Game Boy/Game Boy Color.
-  + [nestopia](https://github.com/libretro/nestopia) Emulator for NES.
-  + [beetle-vb-libretro](https://github.com/libretro/beetle-vb-libretro) Emulator for Virtual Boy.
-  + [libretro-fceumm](https://github.com/libretro/libretro-fceumm) Emulator for NES.
   + [a5200](https://github.com/libretro/a5200) Emulator for Atari 5200.
-  + [beetle-wswan-libretro](https://github.com/libretro/beetle-wswan-libretro) Emulator for WonderSwan.
-  + [beetle-ngp-libretro](https://github.com/libretro/beetle-ngp-libretro) Emulator for Neo Geo Pocket.
+  + [FBNeo](https://github.com/libretro/FBNeo) Emulator for arcades.
+  + [prosystem-libretro](https://github.com/libretro/prosystem-libretro) Emulator for Atari 7800.
+  + [stella2014-libretro](https://github.com/libretro/stella2014-libretro) Emulator for Atari 2600.
 + [RetroArch](https://github.com/libretro/retroarch) We mainly rely on the fantastic work done by them.
 + [Emscripten](https://github.com/emscripten-core/emscripten) Without which we could not run native codes inside browsers.
 + [webretro](https://github.com/BinBashBanana/webretro) Parts of our patches made on RetroArch is adapted from here.

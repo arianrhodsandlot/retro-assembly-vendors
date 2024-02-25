@@ -25,22 +25,6 @@
         left: 20px;
         z-index: 11;
       }
-      #canvas {
-        background-color: black;
-        background-image: repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
-          repeating-linear-gradient(45deg, #000 25%, #222 25%, #222 75%, #000 75%, #000);
-        background-position: 0 0, 15px 15px;
-        background-size: 30px 30px;
-        cursor: default;
-        display: block;
-        image-rendering: pixelated;
-        inset: 0;
-        max-height: 100%;
-        max-width: 100%;
-        position: fixed;
-        display: none;
-        z-index: 10;
-      }
     </style>
   </head>
   <body>
@@ -49,25 +33,14 @@
         <option value="">Select a core</option>
         <option value="a5200">a5200</option>
         <option value="fbneo">fbneo</option>
-        <option value="fceumm">fceumm</option>
-        <option value="gearboy">gearboy</option>
-        <option value="genesis_plus_gx">genesis_plus_gx</option>
-        <option value="mednafen_lynx">mednafen_lynx</option>
-        <option value="mednafen_ngp">mednafen_ngp</option>
-        <option value="mednafen_vb">mednafen_vb</option>
-        <option value="mednafen_wswan">mednafen_wswan</option>
-        <option value="mgba">mgba</option>
-        <option value="nestopia">nestopia</option>
-        <option value="picodrive">picodrive</option>
         <option value="prosystem">prosystem</option>
-        <option value="snes9x">snes9x</option>
         <option value="stella2014">stella2014</option>
       </select>
       <button type="button" id="add-rom" hidden>Add a ROM file</button>
       <button type="button" id="add-bios" hidden>Add a BIOS file</button>
       <button type="button" id="run" hidden>Run</button>
     </div>
-    <canvas id="canvas"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/nostalgist"></script>
     <script type="module" src="./demo.js"></script>
   </body>
 </html>
