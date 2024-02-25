@@ -6,8 +6,6 @@ wd=$(pwd)
 emsdk_dir=$wd/modules/emsdk
 cores_dir=$wd/modules/cores
 retroarch_dir=$wd/modules/retroarch
-retroarch_dist_dir=$retroarch_dir/dist-scripts
-retroarch_pkg_dir=$retroarch_dir/pkg/emscripten
 cores_dist_dir=$wd/dist/cores
 
 mkdir -p "$cores_dist_dir"
@@ -51,25 +49,27 @@ function build_core_bitcode() {
     fi
     emmake make platform=emscripten
   fi
-  mv ./*.bc "$retroarch_dist_dir"
+  mv ./*.bc "$retroarch_dir/libretro_emscripten.bc"
   echo "build bitcode for core $core finished!"
 }
 
-function dist_cores()  {
+function dist_core()  {
+  core=$1
   echo "Compiling bitcode files..."
 
   # compile bitcode (.bc) files to wasm files
-  cd "$retroarch_dist_dir"
-  emmake ./dist-cores.sh emscripten
+  cd "$retroarch_dir"
+  emmake make -f Makefile.emscripten LIBRETRO="$core" -j all
   # move compiled js/wasm files to our dist directory
-  mv "$retroarch_pkg_dir"/*.{js,wasm} "$cores_dist_dir"
+  mv "$retroarch_dir"/*.{js,wasm} "$cores_dist_dir"
   echo "Compile bitcode files finished!"
 }
 
-cores=(FBNeo stella2014-libretro prosystem-libretro)
+# cores=(FBNeo stella2014-libretro prosystem-libretro)
+cores=(a5200 fbneo prosystem stella2014)
 clean_up_retroarch_dir
-activate_emscripten '3.1.54'
+activate_emscripten '3.1.46'
 for core in "${cores[@]}"; do
   build_core_bitcode "$core"
+  dist_core $core
 done
-dist_cores

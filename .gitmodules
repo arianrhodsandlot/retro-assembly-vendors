@@ -1,45 +1,18 @@
 [submodule "retroarch"]
 	path = modules/retroarch
 	url = https://github.com/libretro/RetroArch
-[submodule "modules/cores/beetle-lynx-libretro"]
-	path = modules/cores/beetle-lynx-libretro
-	url = https://github.com/libretro/beetle-lynx-libretro
-[submodule "modules/cores/prosystem-libretro"]
-	path = modules/cores/prosystem-libretro
-	url = https://github.com/libretro/prosystem-libretro
-[submodule "modules/cores/Genesis-Plus-GX"]
-	path = modules/cores/Genesis-Plus-GX
-	url = https://github.com/libretro/Genesis-Plus-GX
-[submodule "modules/cores/stella2014-libretro"]
-	path = modules/cores/stella2014-libretro
-	url = https://github.com/libretro/stella2014-libretro
 [submodule "modules/emsdk"]
 	path = modules/emsdk
 	url = https://github.com/emscripten-core/emsdk
-[submodule "modules/cores/snes9x"]
-	path = modules/cores/snes9x
-	url = https://github.com/libretro/snes9x
-[submodule "modules/cores/mgba"]
-	path = modules/cores/mgba
-	url = https://github.com/libretro/mgba
-[submodule "modules/cores/nestopia"]
-	path = modules/cores/nestopia
-	url = https://github.com/libretro/nestopia
-[submodule "modules/cores/beetle-vb-libretro"]
-	path = modules/cores/beetle-vb-libretro
-	url = https://github.com/libretro/beetle-vb-libretro
-[submodule "modules/cores/libretro-fceumm"]
-	path = modules/cores/libretro-fceumm
-	url = https://github.com/libretro/libretro-fceumm
 [submodule "modules/cores/a5200"]
 	path = modules/cores/a5200
 	url = https://github.com/libretro/a5200
-[submodule "modules/cores/beetle-wswan-libretro"]
-	path = modules/cores/beetle-wswan-libretro
-	url = https://github.com/libretro/beetle-wswan-libretro
-[submodule "modules/cores/beetle-ngp-libretro"]
-	path = modules/cores/beetle-ngp-libretro
-	url = https://github.com/libretro/beetle-ngp-libretro
-[submodule "modules/cores/FBNeo"]
-	path = modules/cores/FBNeo
+[submodule "modules/cores/fbneo"]
+	path = modules/cores/fbneo
 	url = https://github.com/libretro/FBNeo
+[submodule "modules/cores/prosystem"]
+	path = modules/cores/prosystem
+	url = https://github.com/libretro/prosystem-libretro
+[submodule "modules/cores/stella2014"]
+	path = modules/cores/stella2014
+	url = https://github.com/libretro/stella2014-libretro
