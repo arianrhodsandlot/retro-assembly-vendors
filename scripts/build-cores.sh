@@ -20,6 +20,7 @@ function activate_emscripten() {
   emscripten_version=$1
   "$emsdk_dir/emsdk" install "$emscripten_version"
   "$emsdk_dir/emsdk" activate "$emscripten_version"
+  # shellcheck source=/dev/null
   . "$wd/modules/emsdk/emsdk_env.sh"
 
   node_bin_dir="${EMSDK_NODE%/*}"
@@ -70,5 +71,5 @@ activate_emscripten '3.1.50'
 cores=(a5200 fbneo prosystem stella2014)
 for core in "${cores[@]}"; do
   build_core_bitcode "$core"
-  dist_core $core
+  dist_core "$core"
 done
