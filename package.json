@@ -1,11 +1,22 @@
 {
   "name": "retro-assembly-vendors",
-  "version": "1.17.0-20240125144704",
+  "version": "1.17.0-20240225181605",
   "description": "Upstream files for Retro Assembly",
-  "keywords": [],
-  "author": "arianrhodsandlot",
+  "keywords": [
+    "retroarch",
+    "emulator",
+    "emscripten"
+  ],
+  "author": {
+    "name": "arianrhodsandlot",
+    "email": "theguidanceofawhitetower@gmail.com"
+  },
   "license": "GPL-3.0",
   "files": [
     "dist"
-  ]
+  ],
+  "scripts": {
+    "bump": "./scripts/bump.sh",
+    "dev": "python3 -m http.server"
+  }
 }
